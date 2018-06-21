@@ -1,6 +1,10 @@
 // Service provider framework sketch - Service interface - Page 12
-package item01;
 
+/**
+ * Service Provider interface.
+ *
+ * @version 1.0 2018-06-21
+ */
 public interface Provider {
     Service newService();
 }
