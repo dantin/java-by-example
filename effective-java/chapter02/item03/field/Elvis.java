@@ -1,6 +1,4 @@
 // Singleton with public final field
-package item03.field;
-
 public class Elvis {
     public static final Elvis INSTANCE = new Elvis();
 
