@@ -1,5 +1,4 @@
 // Serializable singleton with public final field
-package item03.serializable;
 
 public class Elvis {
     public static final Elvis INSTANCE = new Elvis();
