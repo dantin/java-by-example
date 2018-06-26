@@ -1,5 +1,3 @@
-package item05;
-
 public class Sum {
     // Hideously slow program!
     public static void main(String[] args) {
