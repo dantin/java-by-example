@@ -1,5 +1,4 @@
 // Can you spot the "memory leak"?
-package item06;
 
 import java.util.Arrays;
 
