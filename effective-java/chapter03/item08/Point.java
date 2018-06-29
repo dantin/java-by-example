@@ -1,5 +1,4 @@
 // Simple immutable two-dimensional integer point class
-package item08;
 
 public class Point {
     private final int x;

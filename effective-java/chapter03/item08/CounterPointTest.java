@@ -1,5 +1,4 @@
 // Test program that uses CounterPoint as Point
-package item08;
 
 import java.util.HashSet;
 import java.util.Set;
