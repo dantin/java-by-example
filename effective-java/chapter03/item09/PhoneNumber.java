@@ -1,5 +1,4 @@
 // Shows the need for overriding hashcode when you override equals
-package item09;
 
 import java.util.HashMap;
 import java.util.Map;

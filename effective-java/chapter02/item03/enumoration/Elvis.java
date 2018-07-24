@@ -1,5 +1,4 @@
 // Enum singleton - the preferred approach
-package item03.enumoration;
 
 public enum Elvis {
     INSTANCE;

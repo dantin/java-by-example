@@ -1,5 +1,4 @@
 // Creates a lot of unnecessary duplicate object
-package item05.slowversion;
 
 import java.util.Calendar;
 import java.util.Date;

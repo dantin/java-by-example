@@ -1,8 +1,11 @@
-package item01;
-
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Noninstantiable class for service registeration and access.
+ *
+ * @version 1.0 2018-06-21
+ */
 public class Services {
     private Services() {
     } // Prevents instantiation (Item 4)

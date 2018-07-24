@@ -1,5 +1,4 @@
 // Singleton with static factory
-package item03.method;
 
 public class Elvis {
     private static final Elvis INSTANCE = new Elvis();

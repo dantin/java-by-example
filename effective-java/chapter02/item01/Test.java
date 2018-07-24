@@ -1,6 +1,10 @@
 // Service provider framework sketch - Service interface - Page 12
-package item01;
 
+/**
+ * Main class for Service Provider Framework.
+ *
+ * @version 1.0 2018-06-21
+ */
 public class Test {
     public static void main(String[] args) {
         // Providers would execute these lines
@@ -48,3 +52,4 @@ public class Test {
             }
         };
 }
+

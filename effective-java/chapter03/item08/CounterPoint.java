@@ -1,5 +1,4 @@
 // Trivial subclass of Point - doesn't add a value component
-package item08;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

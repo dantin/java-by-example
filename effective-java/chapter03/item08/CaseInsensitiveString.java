@@ -1,5 +1,4 @@
 // Broken - violates symmetry
-package item08;
 
 public final class CaseInsensitiveString {
     private final String s;

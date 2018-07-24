@@ -1,5 +1,4 @@
 // Attempint to add a value component to Point
-package item08;
 
 public class ColorPoint extends Point {
     private final Color color;
