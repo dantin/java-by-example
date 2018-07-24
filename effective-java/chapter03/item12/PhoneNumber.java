@@ -1,5 +1,6 @@
+// version 1.0 2018-07-24
+
 // Making PhoneNumber comparable
-package item12;
 
 import java.util.NavigableSet;
 import java.util.Random;
@@ -96,6 +97,7 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
     //    return 0; // All fields are equal
     //}
 
+    // NOTE: take care of overflow.
     public int compareTo(PhoneNumber pn) {
         // Compare area codes
         int areaCodeDiff = areaCode - pn.areaCode;
