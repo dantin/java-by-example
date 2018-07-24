@@ -1,5 +1,6 @@
+// version 1.0 2018-07-24
+
 // A cloneable version of Stack
-package item11;
 
 import java.util.Arrays;
 
