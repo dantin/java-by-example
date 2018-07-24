@@ -1,5 +1,6 @@
+// version 1.0 2018-07-24
+
 // Encapsulation of data by accessor methods and mutators.
-package item04;
 
 class Point {
     private double x;

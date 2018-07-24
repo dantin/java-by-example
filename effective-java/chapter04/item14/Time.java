@@ -1,5 +1,6 @@
+// version 1.0 2018-07-24
+
 // Public class with exposed immutable fields
-package item14;
 
 public final class Time {
     private static final int HOURS_PER_DAY = 24;
