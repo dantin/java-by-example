@@ -1,5 +1,4 @@
 // Constant utility class
-package item19;
 
 public class PhysicalConstants {
     private PhysicalConstants() {
