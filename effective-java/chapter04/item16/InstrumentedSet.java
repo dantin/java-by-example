@@ -1,5 +1,4 @@
 // Wrapper class - uses composition in place of inheritance
-package item16;
 
 import java.util.Arrays;
 import java.util.Collection;

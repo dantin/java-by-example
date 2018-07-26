@@ -1,5 +1,4 @@
-// Broken
-package item16;
+// Broken - Inappropriate use of inheritance!
 
 import java.util.Arrays;
 import java.util.Collection;
