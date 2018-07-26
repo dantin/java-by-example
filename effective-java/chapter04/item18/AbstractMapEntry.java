@@ -1,6 +1,4 @@
 // Skeletal Implementation
-package item18;
-
 import java.util.Map;
 
 public abstract class AbstractMapEntry<K, V> implements Map.Entry<K, V> {
@@ -38,6 +36,5 @@ public abstract class AbstractMapEntry<K, V> implements Map.Entry<K, V> {
 
     private static int hashCode(Object obj) {
         return obj == null ? 0 : obj.hashCode();
-        
     }
 }
