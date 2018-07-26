@@ -1,5 +1,3 @@
-package item17;
-
 import java.util.Date;
 
 public final class Sub extends Super {
