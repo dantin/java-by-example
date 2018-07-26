@@ -1,5 +1,6 @@
+// version 1.0 2018-07-24
+
 // Immutable class
-package item15;
 
 public final class Complex {
     private final double re;
