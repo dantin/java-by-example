@@ -1,6 +1,4 @@
 // Concrete implementation built atop skeletal implementation
-package item18;
-
 import java.util.AbstractList;
 import java.util.Collections;
 import java.util.List;
