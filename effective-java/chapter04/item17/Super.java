@@ -1,5 +1,3 @@
-package item17;
-
 public class Super {
     // Broken - constructor invokes an overridable method
     public Super() {
