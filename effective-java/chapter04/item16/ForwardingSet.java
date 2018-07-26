@@ -1,5 +1,4 @@
 // Reusable forwarding class
-package item16;
 
 import java.util.Collection;
 import java.util.Iterator;
