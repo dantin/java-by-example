@@ -1,5 +1,3 @@
-package item20.hierarchy;
-
 class Rectangle extends Figure {
     final double length;
     final double width;
