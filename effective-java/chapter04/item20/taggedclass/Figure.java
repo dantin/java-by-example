@@ -1,6 +1,4 @@
 // Tagged class - vastly inferior to a class hierarchy!
-package item20.taggedclass;
-
 class Figure {
     enum Shape {
         RECTANGLE, CIRCLE
