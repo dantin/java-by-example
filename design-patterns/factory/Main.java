@@ -1,5 +1,5 @@
 
-public class TestFactory {
+public class Main {
 
     public static void main(String[] args) {
         Computer pc = ComputerFactory.getComputer("PC", "2 GB", "500 GB", "2.4 GHz");
