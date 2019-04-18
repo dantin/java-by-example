@@ -1,0 +1,17 @@
+
+SOURCE_DIR := $(shell pwd)
+
+SOURCES      := $(shell find $(SOURCE_DIR) -type f -print | grep -vE '.git')
+SOURCES_JAVA := $(findstring Main.java,$(SOURCES))
+
+DEFAULT: build
+
+build: Main.java
+	@[[ -e $< ]] && javac $< || true
+
+.PHONY: clean
+clean:
+	@rm -rf *~ *.class
+
+run: build
+	@[[ -e $(SOURCE_DIR)/Main.java ]] && echo -e "\nPattern Demo" && java Main || true
