@@ -1,6 +1,9 @@
-// Serializable singleton with public final field
+import java.io.Serializable;
 
-public class Elvis {
+// Serializable singleton with public final field
+public class Elvis implements Serializable {
+    private static final long serialVersionUID = 0L;
+
     public static final Elvis INSTANCE = new Elvis();
 
     private Elvis() {
