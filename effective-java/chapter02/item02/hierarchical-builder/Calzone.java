@@ -1,3 +1,4 @@
+// Subclass with hierarchical builder.
 public class Calzone extends Pizza {
     private final boolean sauceInside;
 
@@ -23,5 +24,11 @@ public class Calzone extends Pizza {
     private Calzone(Builder builder) {
         super(builder);
         sauceInside = builder.sauceInside;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Calzone with %s and source on the %s",
+                toppings, sauceInside ? "inside" : "outside");
     }
 }

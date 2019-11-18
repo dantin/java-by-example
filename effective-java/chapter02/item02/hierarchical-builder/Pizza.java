@@ -1,6 +1,8 @@
 import java.util.*;
 
 // Builder pattern for class hierarchies
+//
+// Note that the underlying "simulated self-type" idiom allows for arbitrary fluid hierarchiew, not just builders.
 public abstract class Pizza {
     public enum Topping { HAM, MUSHROOM, ONION, PEPPER, SAUSAGE };
     final Set<Topping> toppings;
