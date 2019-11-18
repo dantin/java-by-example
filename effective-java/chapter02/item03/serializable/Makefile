@@ -1,12 +1,14 @@
-.PHONY: run
 
 default: build
 
-build: *.java
-	javac Elvis.java
+.PHONY: build
+build: Elvis.java
+	@javac Elvis.java
 
+.PHONY: run
 run: build
-	java Elvis
+	@java Elvis
 
+.PHONY: clean
 clean:
-	rm -f *.class
+	@rm -f *.class
