@@ -1,12 +1,16 @@
-.PHONY: run
 
 default: build
 
-build: *.java
-	javac NutritionFacts.java
+.PHONY: build
+build: NutritionFacts.java
+	@javac NutritionFacts.java
 
+.PHONY: run
 run: build
-	java NutritionFacts
+	@echo "JavaBeans Pattern"
+	@java NutritionFacts
+	@echo "  allows inconsistency, mandates mutability"
 
+.PHONY: clean
 clean:
-	rm -f *.class
+	@rm -f *.class

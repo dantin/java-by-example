@@ -10,5 +10,8 @@ public class PizzaMain {
             .addTopping(Pizza.Topping.HAM)
             .sauceInside()
             .build();
+
+        System.out.println(pizza);
+        System.out.println(calzone);
     }
 }

@@ -2,12 +2,12 @@
 default: build
 
 .PHONY: build
-build: NutritionFacts.java
-	@javac NutritionFacts.java
+build: *.java
+	@javac PizzaMain.java
 
 .PHONY: run
 run: build
-	@java NutritionFacts
+	@java PizzaMain
 
 .PHONY: clean
 clean:
