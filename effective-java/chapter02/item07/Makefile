@@ -3,7 +3,7 @@
 default: build
 
 build: *.java
-	javac Person.java
+	javac Stack.java
 
 clean:
 	rm -f *.class
