@@ -2,12 +2,12 @@
 default: build
 
 .PHONY: build
-build: UtilityClass.java
-	@javac UtilityClass.java
+build: *.java
+	@javac Stack.java
 
 .PHONY: run
 run:
-	@echo "No Main"
+	@java Stack a b c
 
 .PHONY: clean
 clean:
