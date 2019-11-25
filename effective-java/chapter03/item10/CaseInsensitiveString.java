@@ -1,12 +1,13 @@
-// Broken - violates symmetry
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
+// Broken - violates symmetry!
 public final class CaseInsensitiveString {
     private final String s;
 
     public CaseInsensitiveString(String s) {
-        if (s == null)
-            throw new NullPointerException();
-        this.s = s;
+        this.s = Objects.requireNonNull(s);
     }
 
     // Broken - violates symmetry!
@@ -19,7 +20,7 @@ public final class CaseInsensitiveString {
     //    return false;
     //}
 
-    // correct way
+    // Fixed equals method.
     @Override
     public boolean equals(Object o) {
         return o instanceof CaseInsensitiveString
@@ -29,6 +30,10 @@ public final class CaseInsensitiveString {
     public static void main(String[] args) {
         CaseInsensitiveString cis = new CaseInsensitiveString("Polish");
         String s = "polish";
-        System.out.println(cis.equals(s) + " " + s.equals(cis));
+
+        List<CaseInsensitiveString> list = new ArrayList<>();
+        list.add(cis);
+
+        System.out.println(list.contains(s));
     }
 }

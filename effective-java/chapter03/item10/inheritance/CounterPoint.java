@@ -1,7 +1,6 @@
-// Trivial subclass of Point - doesn't add a value component
-
 import java.util.concurrent.atomic.AtomicInteger;
 
+// Trivial subclass of Point - doesn't add a value component.
 public class CounterPoint extends Point {
     private static final AtomicInteger counter = new AtomicInteger();
 
@@ -10,7 +9,7 @@ public class CounterPoint extends Point {
         counter.incrementAndGet();
     }
 
-    public int numberCreated() {
+    public static int numberCreated() {
         return counter.get();
     }
 }

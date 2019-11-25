@@ -1,15 +1,13 @@
-// Add a value component without violating the equals contract
-package item08.composition;
+import java.util.Objects;
 
+// Add a value component without violating the equals contract
 public class ColorPoint {
     private final Point point;
     private final Color color;
 
     public ColorPoint(int x, int y, Color color) {
-        if (color == null)
-            throw new NullPointerException();
         point = new Point(x, y);
-        this.color = color;
+        this.color = Objects.requireNonNull(color);
     }
 
     /**

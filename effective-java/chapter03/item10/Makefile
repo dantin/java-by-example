@@ -1,23 +1,33 @@
-.PHONY: run
 
 default: build
 
-build: symmetry transitivity transitivity2
+build: CaseInsensitiveString.class Point.class PhoneNumber.class
 
-symmetry: CaseInsensitiveString.java
-	# violates symmetry!
-	javac CaseInsensitiveString.java
+CaseInsensitiveString.class: CaseInsensitiveString.java
+	@# code - violate symmetry
+	@javac CaseInsensitiveString.java
 
-transitivity: Point.java ColorPoint.java
-	javac ColorPoint.java
+Point.class: Point.java
+	@# code - violate Liskov substitution principle
+	@javac Point.java
 
-transitivity2: CounterPointTest.java CounterPoint.java
-	javac CounterPointTest.java
+PhoneNumber.class: PhoneNumber.java
+	@# code - typical equals method
+	@javac PhoneNumber.java
 
+.PHONY: inheritance
+inheritance:
+	@cd inheritance; make build
+
+.PHONY: run
 run: build
-	java CaseInsensitiveString
-	java ColorPoint
-	java CounterPointTest
+	@echo "violates symmetry!"
+	@java CaseInsensitiveString
+	@cd inheritance; make run
+	@cd composition; make run
 
+.PHONY: clean
 clean:
-	rm -f *.class
+	@rm -f *.class
+	@cd inheritance; make clean
+	@cd composition; make clean
