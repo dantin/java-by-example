@@ -1,5 +1,4 @@
 // Simple immutable two-dimensional integer point class
-
 public class Point {
     private final int x;
     private final int y;
@@ -26,7 +25,7 @@ public class Point {
     //    return p.x == x && p.y == y;
     //}
 
-    // See Item 9
+    // See Item 11
     @Override
     public int hashCode() {
         return 31 * x + y;

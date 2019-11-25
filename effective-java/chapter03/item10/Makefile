@@ -1,12 +1,33 @@
-.PHONY: run
 
 default: build
 
-build: PhoneNumber.java
-	javac PhoneNumber.java
+build: CaseInsensitiveString.class Point.class PhoneNumber.class
 
+CaseInsensitiveString.class: CaseInsensitiveString.java
+	@# code - violate symmetry
+	@javac CaseInsensitiveString.java
+
+Point.class: Point.java
+	@# code - violate Liskov substitution principle
+	@javac Point.java
+
+PhoneNumber.class: PhoneNumber.java
+	@# code - typical equals method
+	@javac PhoneNumber.java
+
+.PHONY: inheritance
+inheritance:
+	@cd inheritance; make build
+
+.PHONY: run
 run: build
-	java PhoneNumber
+	@echo "violates symmetry!"
+	@java CaseInsensitiveString
+	@cd inheritance; make run
+	@cd composition; make run
 
+.PHONY: clean
 clean:
-	rm -f *.class
+	@rm -f *.class
+	@cd inheritance; make clean
+	@cd composition; make clean
