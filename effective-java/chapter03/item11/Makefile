@@ -2,11 +2,11 @@
 
 default: build
 
-build: Stack.java
-	javac Stack.java
+build: PhoneNumber.java
+	javac PhoneNumber.java
 
 run: build
-	java Stack 1 2 3 4 5
+	java PhoneNumber
 
 clean:
 	rm -f *.class

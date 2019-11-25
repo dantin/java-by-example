@@ -2,11 +2,11 @@
 
 default: build
 
-build: WordList.java
-	javac WordList.java
+build: PhoneNumber.java
+	javac PhoneNumber.java
 
 run: build
-	java WordList 1.0 1.00
+	java PhoneNumber
 
 clean:
 	rm -f *.class
