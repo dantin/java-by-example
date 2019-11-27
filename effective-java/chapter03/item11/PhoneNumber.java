@@ -1,25 +1,22 @@
-// Shows the need for overriding hashcode when you override equals
-
 import java.util.HashMap;
 import java.util.Map;
 
+// Shows the need for overriding hashcode when you override equals
 public final class PhoneNumber {
     private final short areaCode;
     private final short prefix;
-    private final short lineNumber;
+    private final short lineNum;
 
-    public PhoneNumber(int areaCode, int prefix, int lineNumber) {
-        rangeCheck(areaCode, 999, "area code");
-        rangeCheck(prefix, 999, "prefix");
-        rangeCheck(lineNumber, 9999, "line number");
-        this.areaCode = (short) areaCode;
-        this.prefix = (short) prefix;
-        this.lineNumber = (short) lineNumber;
+    public PhoneNumber(int areaCode, int prefix, int lineNum) {
+        this.areaCode = rangeCheck(areaCode, 999, "area code");
+        this.prefix = rangeCheck(prefix, 999, "prefix");
+        this.lineNum = rangeCheck(lineNum, 9999, "line num");
     }
 
-    private static void rangeCheck(int arg, int max, String name) {
-        if (arg < 0 || arg > max)
-            throw new IllegalArgumentException(name + ": " + arg);
+    private static short rangeCheck(int val, int max, String name) {
+        if (val < 0 || val > max)
+            throw new IllegalArgumentException(name + ": " + val);
+        return (short) val;
     }
 
     @Override
@@ -29,34 +26,36 @@ public final class PhoneNumber {
         if (!(o instanceof PhoneNumber))
             return false;
         PhoneNumber pn = (PhoneNumber) o;
-        return pn.lineNumber == lineNumber
+        return pn.lineNum == lineNum
             && pn.prefix == prefix
             && pn.areaCode == areaCode;
     }
 
     // Broken - no hashCode method!
 
-    // A decent hashCode method
-    //@Override
-    //public int hashCode() {
-    //    int result = 17;
-    //    result = 31 * result + areaCode;
-    //    result = 31 * result + prefix;
-    //    result = 31 * result + lineNumber;
+    // Typical hashCode method
+    //@Override public int hashCode() {
+    //    int result = Short.hashCode(areaCode);
+    //    result = 31 * result + Short.hashCode(prefix);
+    //    result = 31 * result + Short.hashCode(lineNum);
     //    return result;
     //}
 
-    // Lazily initialized, cached hashCode
-    private volatile int hashCode; // See Item 71
+    // One-line hashCode method - mediocre performance
+    //@Override public int hashCode() {
+    //    return Objects.hash(lineNum, prefix, areaCode);
+    //}
+    //
+    // hashCode method with lazily initialized, cached hashCode
+    private volatile int hashCode; // Automatically initialized to 0
 
     @Override
     public int hashCode() {
         int result = hashCode;
         if (result == 0) {
-            result = 17;
-            result = 31 * result + areaCode;
-            result = 31 * result + prefix;
-            result = 31 * result + lineNumber;
+            result = Short.hashCode(areaCode);
+            result = 31 * result + Short.hashCode(prefix);
+            result = 31 * result + Short.hashCode(lineNum);
             hashCode = result;
         }
         return result;
