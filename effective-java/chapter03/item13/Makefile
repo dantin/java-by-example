@@ -9,7 +9,7 @@ build: Stack.java PhoneNumber.java
 .PHONY: run
 run: build
 	@java PhoneNumber
-	@java Stack 1 2 3 4 5
+	@java Stack 3 1 4 1 5 9 3
 
 .PHONY: clean
 clean:
