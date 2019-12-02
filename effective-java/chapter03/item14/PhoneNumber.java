@@ -1,28 +1,29 @@
 // version 1.0 2018-07-24
 
-// Making PhoneNumber comparable
-
 import java.util.NavigableSet;
 import java.util.Random;
 import java.util.TreeSet;
+import java.util.Comparator;
 
+import static java.util.Comparator.*;
+
+// Making PhoneNumber comparable
 public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
     private final short areaCode;
     private final short prefix;
-    private final short lineNumber;
+    private final short lineNum;
 
-    public PhoneNumber(int areaCode, int prefix, int lineNumber) {
-        rangeCheck(areaCode, 999, "area code");
-        rangeCheck(prefix, 999, "prefix");
-        rangeCheck(lineNumber, 9999, "line number");
-        this.areaCode = (short) areaCode;
-        this.prefix = (short) prefix;
-        this.lineNumber = (short) lineNumber;
+    public PhoneNumber(int areaCode, int prefix, int lineNum) {
+        this.areaCode = rangeCheck(areaCode, 999, "area code");
+        this.prefix   = rangeCheck(prefix,   999, "prefix");
+        this.lineNum  = rangeCheck(lineNum, 9999, "line number");
     }
 
-    private static void rangeCheck(int arg, int max, String name) {
-        if (arg < 0 || arg > max)
-            throw new IllegalArgumentException(name + ": " + arg);
+    private static short rangeCheck(int val, int max, String name) {
+        if (val < 0 || val > max) {
+            throw new IllegalArgumentException(name + ": " + val);
+        }
+        return (short) val;
     }
 
     @Override
@@ -32,17 +33,16 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
         if (!(o instanceof PhoneNumber))
             return false;
         PhoneNumber pn = (PhoneNumber) o;
-        return pn.lineNumber == lineNumber
+        return pn.lineNum == lineNum
             && pn.prefix == prefix
             && pn.areaCode == areaCode;
     }
 
     @Override
     public int hashCode() {
-        int result = 17;
-        result = 31 * result + areaCode;
-        result = 31 * result + prefix;
-        result = 31 * result + lineNumber;
+        int result = Short.hashCode(areaCode);
+        result = 31 * result + Short.hashCode(prefix);
+        result = 31 * result + Short.hashCode(lineNum);
         return result;
     }
 
@@ -62,7 +62,8 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
      */
     @Override
     public String toString() {
-        return String.format("(%03d) %03d-%04d", areaCode, prefix, lineNumber);
+        return String.format("%03d-%03d-%04d",
+                areaCode, prefix, lineNum);
     }
 
     @Override
@@ -74,57 +75,40 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
         }
     }
 
-    // Works fine, but can be made faster
+    // Multiple-field Comparable with primitive field
     //public int compareTo(PhoneNumber pn) {
-    //    // Compare area codes
-    //    if (areaCode < pn.areaCode)
-    //        return -1;
-    //    if (areaCode > pn.areaCode)
-    //        return 1;
-
-    //    // Area codes are equal, compare prefixes
-    //    if (prefix < pn.prefix)
-    //        return -1;
-    //    if (prefix > pn.prefix)
-    //        return 1;
-
-    //    // Area codes and prefixes are equal, compare line numbers
-    //    if (lineNumber < pn.lineNumber)
-    //        return -1;
-    //    if (lineNumber > pn.lineNumber)
-    //        return 1;
-
-    //    return 0; // All fields are equal
+    //    int result = Short.compare(areaCode, pn.areaCode);
+    //    if (result == 0) {
+    //        result = Short.compare(prefix, pn.prefix);
+    //        if (result == 0) {
+    //            result = Short.compare(lineNum, pn.lineNum);
+    //        }
+    //    }
+    //    return result;
     //}
 
-    // NOTE: take care of overflow.
+    // Comparable with comparator construction methods
+    private static final Comparator<PhoneNumber> COMPARATOR =
+            comparingInt((PhoneNumber pn) -> pn.areaCode)
+                    .thenComparingInt(pn -> pn.prefix)
+                    .thenComparingInt(pn -> pn.lineNum);
+
     public int compareTo(PhoneNumber pn) {
-        // Compare area codes
-        int areaCodeDiff = areaCode - pn.areaCode;
-        if (areaCodeDiff != 0)
-            return areaCodeDiff;
+        return COMPARATOR.compare(this, pn);
+    }
 
-        // Area codes are equal, compare prefixes
-        int prefixDiff = prefix - pn.prefix;
-        if (prefixDiff != 0)
-            return prefixDiff;
-
-        // Area codes and prefixes are equal, compare line numbers
-        return lineNumber - pn.lineNumber;
+    private static PhoneNumber randomPhoneNumber() {
+        Random rnd = new Random();
+        return new PhoneNumber((short) rnd.nextInt(1000),
+                               (short) rnd.nextInt(1000),
+                               (short) rnd.nextInt(10000));
     }
 
     public static void main(String[] args) {
         NavigableSet<PhoneNumber> s = new TreeSet<PhoneNumber>();
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) {
             s.add(randomPhoneNumber());
+        }
         System.out.println(s);
-    }
-
-    private static final Random rnd = new Random();
-
-    private static PhoneNumber randomPhoneNumber() {
-        return new PhoneNumber((short) rnd.nextInt(1000),
-                               (short) rnd.nextInt(1000),
-                               (short) rnd.nextInt(10000));
     }
 }
