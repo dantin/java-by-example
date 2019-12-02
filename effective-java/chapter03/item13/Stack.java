@@ -1,9 +1,8 @@
 // version 1.0 2018-07-24
 
-// A cloneable version of Stack
-
 import java.util.Arrays;
 
+// A cloneable version of Stack
 public class Stack implements Cloneable {
     private Object[] elements;
     private int size = 0;
@@ -30,6 +29,7 @@ public class Stack implements Cloneable {
         return size == 0;
     }
 
+    // Clone method for class with reference to mutable state
     @Override
     public Stack clone() {
         try {

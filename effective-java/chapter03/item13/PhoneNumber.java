@@ -1,27 +1,24 @@
 // version 1.0 2018-07-24
 
-// Adding a clone method to PhoneNumber
-
 import java.util.HashMap;
 import java.util.Map;
 
+// Adding a clone method to PhoneNumber
 public final class PhoneNumber implements Cloneable {
     private final short areaCode;
     private final short prefix;
-    private final short lineNumber;
+    private final short lineNum;
 
-    public PhoneNumber(int areaCode, int prefix, int lineNumber) {
-        rangeCheck(areaCode, 999, "area code");
-        rangeCheck(prefix, 999, "prefix");
-        rangeCheck(lineNumber, 9999, "line number");
-        this.areaCode = (short) areaCode;
-        this.prefix = (short) prefix;
-        this.lineNumber = (short) lineNumber;
+    public PhoneNumber(int areaCode, int prefix, int lineNum) {
+        this.areaCode = rangeCheck(areaCode, 999, "area code");
+        this.prefix   = rangeCheck(prefix,   999, "prefix");
+        this.lineNum  = rangeCheck(lineNum, 9999, "line number");
     }
 
-    private static void rangeCheck(int arg, int max, String name) {
-        if (arg < 0 || arg > max)
-            throw new IllegalArgumentException(name + ": " + arg);
+    private static short rangeCheck(int val, int max, String name) {
+        if (val < 0 || val > max)
+            throw new IllegalArgumentException(name + ": " + val);
+        return (short) val;
     }
 
     @Override
@@ -31,17 +28,16 @@ public final class PhoneNumber implements Cloneable {
         if (!(o instanceof PhoneNumber))
             return false;
         PhoneNumber pn = (PhoneNumber) o;
-        return pn.lineNumber == lineNumber
+        return pn.lineNum == lineNum
             && pn.prefix == prefix
             && pn.areaCode == areaCode;
     }
 
     @Override
     public int hashCode() {
-        int result = 17;
-        result = 31 * result + areaCode;
-        result = 31 * result + prefix;
-        result = 31 * result + lineNumber;
+        int result = Short.hashCode(areaCode);
+        result = 31 * result + Short.hashCode(prefix);
+        result = 31 * result + Short.hashCode(lineNum);
         return result;
     }
 
@@ -61,7 +57,8 @@ public final class PhoneNumber implements Cloneable {
      */
     @Override
     public String toString() {
-        return String.format("(%03d) %03d-%04d", areaCode, prefix, lineNumber);
+        return String.format("%03d-%03d-%04d",
+                areaCode, prefix, lineNum);
     }
 
     @Override
@@ -75,7 +72,7 @@ public final class PhoneNumber implements Cloneable {
 
     public static void main(String[] args) {
         PhoneNumber pn = new PhoneNumber(707, 867, 5039);
-        Map<PhoneNumber, String> m = new HashMap<PhoneNumber, String>();
+        Map<PhoneNumber, String> m = new HashMap<>();
         m.put(pn, "Jenny");
         System.out.println(m.get(pn.clone()));
     }

@@ -1,12 +1,14 @@
-.PHONY: run
 
 default: build
 
+.PHONY: build
 build: PhoneNumber.java
-	javac PhoneNumber.java
+	@javac PhoneNumber.java
 
+.PHONY: run
 run: build
-	java PhoneNumber
+	@java PhoneNumber
 
+.PHONY: clean
 clean:
-	rm -f *.class
+	@rm -f *.class
