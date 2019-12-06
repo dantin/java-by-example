@@ -1,9 +1,8 @@
 // version 1.0 2018-07-24
 
-// Public class with exposed immutable fields
-
+// Public class with exposed immutable fields - questionable
 public final class Time {
-    private static final int HOURS_PER_DAY = 24;
+    private static final int HOURS_PER_DAY    = 24;
     private static final int MINUTES_PER_HOUR = 60;
 
     public final int hour;

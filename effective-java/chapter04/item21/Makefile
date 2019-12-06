@@ -2,11 +2,11 @@
 
 default: build
 
-build: Host.java
-	javac Host.java
+build: Sub.java
+	javac Sub.java
 
 run: build
-	java Host
+	java Sub
 
 clean:
 	rm -f *.class

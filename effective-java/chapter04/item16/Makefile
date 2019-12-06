@@ -1,13 +1,14 @@
-.PHONY: run
 
 default: build
 
-build: InstrumentedHashSet.java InstrumentedSet.java
-	javac InstrumentedHashSet.java InstrumentedSet.java
+build: Point.java Time.java
+	@javac Point.java
+	@javac Time.java
 
+.PHONY: run
 run: build
-	java InstrumentedHashSet
-	java InstrumentedSet
+	@echo "no run here"
 
+.PHONY: clean
 clean:
-	rm -f *.class
+	@rm -f *.class
