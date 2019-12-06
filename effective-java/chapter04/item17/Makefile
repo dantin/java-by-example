@@ -1,12 +1,14 @@
-.PHONY: run
 
 default: build
 
-build: Sub.java
-	javac Sub.java
+.PHONY: build
+build: Complex.java
+	@javac Complex.java
 
+.PHONY: run
 run: build
-	java Sub
+	@echo "no main here"
 
+.PHONY: clean
 clean:
-	rm -f *.class
+	@rm -f *.class

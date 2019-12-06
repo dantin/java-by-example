@@ -2,11 +2,11 @@
 
 default: build
 
-build: Complex.java
-	javac Complex.java
+build: Host.java
+	javac Host.java
 
 run: build
-	echo "no main here"
+	java Host
 
 clean:
 	rm -f *.class
