@@ -1,10 +1,11 @@
-// Broken - Inappropriate use of inheritance!
-
-import java.util.Arrays;
+import java.util.List;
 import java.util.Collection;
 import java.util.HashSet;
 
+// Broken - Inappropriate use of inheritance!
 public class InstrumentedHashSet<E> extends HashSet<E> {
+    private static final long serialVersionUID = 1L;
+
     // The number of attempted element insertions
     private int addCount = 0;
 
@@ -33,7 +34,7 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 
     public static void main(String[] args) {
         InstrumentedHashSet<String> s = new InstrumentedHashSet<String>();
-        s.addAll(Arrays.asList("Snap", "Crackle", "Pop"));
+        s.addAll(List.of("Snap", "Crackle", "Pop"));
         System.out.println(s.getAddCount());
     }
 }
