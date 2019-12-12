@@ -1,10 +1,9 @@
-// Wrapper class - uses composition in place of inheritance
-
-import java.util.Arrays;
+import java.util.List;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+// Wrapper class - uses composition in place of inheritance
 public class InstrumentedSet<E> extends ForwardingSet<E> {
     private int addCount = 0;
 
@@ -30,7 +29,7 @@ public class InstrumentedSet<E> extends ForwardingSet<E> {
 
     public static void main(String[] args) {
         InstrumentedSet<String> s = new InstrumentedSet<String>(new HashSet<String>());
-        s.addAll(Arrays.asList("Snap", "Crackle", "Pop"));
+        s.addAll(List.of("Snap", "Crackle", "Pop"));
         System.out.println(s.getAddCount());
     }
 }
